@@ -1,0 +1,196 @@
+namespace _5fffr
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+          /*  Fraction f1 = new Fraction(3, 4);
+            Fraction f2= new Fraction(3, 4);
+            
+           Fraction resolt =  Fraction.Division(f1,f2);
+
+         resolt = Fraction.Multiplication(f1, f2);
+
+
+
+
+            Console.WriteLine( "num1 =",resolt.NUMERATOR);
+            Console.WriteLine("num2 =", resolt.NUMERATOR);
+            Console.WriteLine("den1 =", resolt.DENOMINATOR);
+            Console.WriteLine("den2 =", resolt.DENOMINATOR);*/
+          Bank o1 = new Bank();
+            Console.WriteLine("+10000");
+            o1.AddMone(10000);
+            Console.WriteLine("-100000");
+            o1.deMone(100000);
+            Console.WriteLine($"summ={o1.Money}");
+        }
+
+       /* struct Fraction
+        {
+            private int _denominator;
+            public int NUMERATOR { get; set; }
+            public int DENOMINATOR
+            {
+
+
+                get { return DENOMINATOR; }
+
+
+
+
+                set
+                {
+
+                    try
+                    {
+
+                        if (value != 0)
+                        {
+                            DENOMINATOR = value;
+                        }
+                        else
+                        {
+                            throw new DivideByZeroException();
+                        }
+                    }
+                    catch (DivideByZeroException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            public Fraction(int num, int denominator)
+            {
+                NUMERATOR = num;
+                DENOMINATOR = denominator;
+            }
+            public static Fraction Multiplication(Fraction f1, Fraction f2)
+            {
+               
+                int NUMERATOR = (f1.NUMERATOR * f2.NUMERATOR);
+                int DENOMINATOR = (f1.DENOMINATOR *f2. DENOMINATOR);
+                Fraction resulst = new Fraction(NUMERATOR, DENOMINATOR);
+                return resulst;
+            }
+            public static Fraction Division(Fraction f1,Fraction f2)
+            {
+               
+                int NUMERATOR = (f1.NUMERATOR * f2.DENOMINATOR);
+                int DENOMINATOR = (f1.DENOMINATOR * f2.NUMERATOR);
+              Fraction resulst =new Fraction(NUMERATOR, DENOMINATOR);
+                return resulst;
+            }
+            public void Addition(int NUMERATOR1, int NUMERATOR2, int DENOMINATOR1, int DENOMINATOR2)
+            {
+                while (true)
+                {
+                    int i = 0;
+                    int j = 0;
+                    if (DENOMINATOR1 > DENOMINATOR2)
+                    {
+                        i += 1;
+
+                        DENOMINATOR2 *= i;
+                    }
+                    else if (DENOMINATOR1 < DENOMINATOR2)
+                    {
+                        j += 1;
+                        DENOMINATOR1 *= j;
+                    }
+                    int NUMERATOR = NUMERATOR1 * j + NUMERATOR2 * i;
+                    int DENOMINATOR = DENOMINATOR1 * j + DENOMINATOR2 * i;
+                    Console.WriteLine(NUMERATOR);
+                    Console.WriteLine("-----------");
+                    Console.WriteLine(DENOMINATOR);
+                }
+              void subtraction(int NUMERATOR1, int NUMERATOR2, int DENOMINATOR1, int DENOMINATOR2)
+                {
+                    int i = 0;
+                    int j = 0;
+                    while (true)
+                    {
+                        
+                        if (DENOMINATOR1 > DENOMINATOR2)
+                        {
+                            i += 1;
+
+                            DENOMINATOR2 *= i;
+                        }
+                        else if (DENOMINATOR1 < DENOMINATOR2)
+                        {
+                            j += 1;
+                            DENOMINATOR1 *= j;
+                        }
+                        
+                      
+                    } 
+                        int NUMERATOR = NUMERATOR1 * j - NUMERATOR2 * i;
+                        int DENOMINATOR = DENOMINATOR1 * j - DENOMINATOR2 * i;
+                    Console.WriteLine(NUMERATOR);
+                    Console.WriteLine("-----------");
+                    Console.WriteLine(DENOMINATOR);
+                }
+            }
+        }*/
+        public class Bank {
+          public double Money { set; get; }
+            public int Code { set; get; }
+            public int NumberOfCard { set; get; }
+            public int NemeAccount { set; get; }
+
+
+            public void AddMone(double sum)
+            {
+                try
+                {
+                   if (sum < 0)
+                    {
+                        throw new AggregateException("Попытка зачислить - сумму");
+                       
+                    }
+                   else
+                    {
+                        Money += sum;
+                    }
+                }
+                catch (AggregateException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine($"summ={sum}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+            public void deMone(double sum)
+            {
+                try
+                {
+                    if (sum <= Money || sum>0)
+                    {
+                        Money -= sum;
+                         
+                    }
+                    else
+                    {
+                       throw new AggregateException("Попытка снятия - суммы"); 
+                    }
+                }
+                catch (AggregateException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine($"summ={sum}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+        }
+    }
+
+}
